@@ -17,7 +17,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
         with:
-          ref: "${{ github.event.pull_request.merge_commit_sha }}"
+          ref: "${{ github.event.pull_request.head.sha }}"
   
       - name: Create k8s Kind Cluster
         uses: helm/kind-action@v1
