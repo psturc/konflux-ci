@@ -1,10 +1,15 @@
 name: Sanity Test
 
-on: pull_request_target
+on:
+  pull_request_target:
+    types: [labeled]
 
 jobs:
+
   sanity-test:
     runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'ok-to-test' }}
+
     steps:
       - name: Free Disk Space (Ubuntu)
         uses: jlumbroso/free-disk-space@main
