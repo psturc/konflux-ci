@@ -11,6 +11,8 @@ main() {
     "${script_path}/wait-for-all.sh" || ret="$?"
     kubectl describe deployment proxy -n konflux-ui
     kubectl logs deployment/proxy -n konflux-ui --all-containers=true --tail=10
+    echo "getting secrets from openshift-pipelines ns"
+    kubectl get secrets -n openshift-pipelines
     exit "$ret"
 }
 

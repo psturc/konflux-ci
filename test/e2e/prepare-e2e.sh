@@ -19,6 +19,8 @@ main() {
         --from-literal webhook.secret="$app_webhook_secret"; done
     sed -i "s|<smee-channel>|$smee_channel|g" "${script_path}/../../smee/smee-client.yaml"
     kubectl create -f "${script_path}/../../smee/smee-client.yaml"
+    echo "getting secrets from openshift-pipelines ns"
+    kubectl get secrets -n openshift-pipelines
 }
 
 
