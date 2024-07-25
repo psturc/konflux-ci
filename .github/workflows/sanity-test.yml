@@ -2,7 +2,7 @@ name: Sanity Test
 
 on:
   pull_request_target:
-    types: [auto_merge_enabled]
+    types: [opened, synchronize, auto_merge_enabled]
 
 jobs:
   sanity-test:
