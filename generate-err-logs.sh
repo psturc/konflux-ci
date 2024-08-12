@@ -19,6 +19,9 @@ generate_logs() {
     local namespaces
     namespaces=$(kubectl get namespaces -o name | xargs -n1 basename)
 
+    kubectl get pods -n build-service -o yaml
+    kubectl logs -n build-service -l control-plane=controller-manager --all-containers=true
+
     for namespace in $namespaces; do
         # Get all 'Warning' type events that occured on the namespace and extract the relevant fields from it as variables.
         echo -e "----------\nnamespace '$namespace'\n----------"
