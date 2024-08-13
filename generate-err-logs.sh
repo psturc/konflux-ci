@@ -16,8 +16,16 @@ generate_logs() {
     rm -rf "$logs_dir"
     mkdir -p "$logs_dir"
 
+    NS=build-service
+    for pod in $(kubectl get pods -n $NS -o name); do echo "LOG FOR $pod:"; kubectl -n $NS logs $pod --all-containers=true; done
+    NS=pipelines-as-code
+    for pod in $(kubectl get pods -n $NS -o name); do echo "LOG FOR $pod:"; kubectl -n $NS logs $pod --all-containers=true; done
+
     local namespaces
     namespaces=$(kubectl get namespaces -o name | xargs -n1 basename)
+
+    kubectl get pods -n build-service -o yaml
+    kubectl logs -n build-service -l control-plane=controller-manager --all-containers=true
 
     for namespace in $namespaces; do
         # Get all 'Warning' type events that occured on the namespace and extract the relevant fields from it as variables.
