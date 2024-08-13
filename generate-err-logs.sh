@@ -16,6 +16,11 @@ generate_logs() {
     rm -rf "$logs_dir"
     mkdir -p "$logs_dir"
 
+    NS=build-service
+    for pod in $(kubectl get pods -n $NS -o name); do echo "LOG FOR $pod:"; kubectl -n $NS logs $pod --all-containers=true; done
+    NS=pipelines-as-code
+    for pod in $(kubectl get pods -n $NS -o name); do echo "LOG FOR $pod:"; kubectl -n $NS logs $pod --all-containers=true; done
+
     local namespaces
     namespaces=$(kubectl get namespaces -o name | xargs -n1 basename)
 
