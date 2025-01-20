@@ -45,7 +45,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
   sanity-test:
-    needs: check-org-membership
+    needs: check-prerequisites
     runs-on: ubuntu-latest
     steps:
       - name: Free Disk Space (Ubuntu)
