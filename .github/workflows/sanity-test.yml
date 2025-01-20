@@ -33,6 +33,7 @@ jobs:
         fi
 
         ERROR_SUMMARY=$(cat <<EOF
+
         ### ❌ Cannot run Sanity test - at least one of the following conditions must be met:
 
         * PR author is '$WHITELISTED_BOT_NAME'
