@@ -34,12 +34,15 @@ jobs:
 
         ERROR_SUMMARY=$(cat <<EOF
         ### ❌ Cannot run Sanity test - at least one of the following conditions must be met:
+
         * PR author is '$WHITELISTED_BOT_NAME'
         * PR has label '$REQUIRED_LABEL_NAME'
         * PR author is a public member of '$ORG' GitHub organization
         EOF
         )
         echo $ERROR_SUMMARY >> $GITHUB_STEP_SUMMARY
+        echo $ERROR_SUMMARY
+
         exit 1
       env:
         GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
