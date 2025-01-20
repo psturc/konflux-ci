@@ -4,6 +4,8 @@ Konflux-CI
 <!-- toc -->
 
 - [Document Conventions](#document-conventions)
+
+- 
 - [Trying Out Konflux](#trying-out-konflux)
   * [Machine Minimum Requirements](#machine-minimum-requirements)
   * [Installing Software Dependencies](#installing-software-dependencies)
