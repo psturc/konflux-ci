@@ -27,7 +27,7 @@ jobs:
           exit 0
         fi
 
-        if gh api /orgs/$ORG/members/$PR_AUTHOR; then
+        if gh api "/orgs/$ORG/members/$PR_AUTHOR"; then
           echo "PR author is a member of $ORG GitHub organization, skipping further checks"
           exit 0
         fi
@@ -40,8 +40,9 @@ jobs:
         * PR author is a public member of '$ORG' GitHub organization
         EOF
         )
-        echo $ERROR_SUMMARY >> $GITHUB_STEP_SUMMARY
-        echo $ERROR_SUMMARY
+
+        echo "$ERROR_SUMMARY" >> $GITHUB_STEP_SUMMARY
+        echo "$ERROR_SUMMARY"
 
         exit 1
       env:
